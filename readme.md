@@ -1,4 +1,4 @@
-# Chat
+# Basic Golang/C Chat
 
 This chat was made with C for the client and Golang for the server. It was made to learn the foundation of online applications, queues, and packet structuring. Some things are hard coded because this is suppossed to be a practice project.
 
