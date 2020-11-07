@@ -35,7 +35,8 @@ thread_f Receive(void *lparam){
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     for(;;){
         char buffer[255];
-        recv(client, buffer, 255, 0);
+        int rs = recv(client, buffer, 255, 0);
+        if(rs == SOCKET_ERROR) break;
         if(strlen(buffer) != 0){
 
             switch (buffer[0])
@@ -71,7 +72,10 @@ thread_f Receive(void *lparam){
         }
         Sleep(100);
     }
-    
+    system("cls");
+    printf("The server is down...\nClosing in 5 seconds...\n");
+    Sleep(5000);
+    exit(-1);    
 }
 
 int main(){
@@ -102,8 +106,9 @@ int main(){
     sprintf(packet, "%c%s\n", LOG_IN, name);
     send(sock, packet, strlen(packet), 0);
     
-    HANDLE HB = CreateThread(NULL, 0, HeartBeat, &sock, 0, NULL);  
+     
     HANDLE RC = CreateThread(NULL, 0, Receive, &sock, 0, NULL);  
+    HANDLE HB = CreateThread(NULL, 0, HeartBeat, &sock, 0, NULL);
 
     for(;;){
         char msg[255];
