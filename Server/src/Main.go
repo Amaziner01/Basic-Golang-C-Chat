@@ -7,6 +7,7 @@ import (
 
 //TO CHANGE THE PORT, CHANGE THIS CONSTANT
 const PORT int = 3200
+const WORD string = "Hello"
 
 func dequeueLoop(queue *Queue) {
 	for {
