@@ -1,6 +1,6 @@
-# Chat
+# Basic Golang/C Chat
 
-This chas was made with C for the client and Golang for the server. It was made to learn the foundation of online applications such as online games, queues, and the packet structuring (_Even though the packets are not that well defined in the file code_). Some things are hard coded because this is suppossed to be a practice project.
+This chat was made with C for the client and Golang for the server. It was made to learn the foundation of online applications, queues, and packet structuring. Some things are hard coded because this is suppossed to be a practice project.
 
 To use it, you have to compile the client using the Makefile (preferably with the MinGW's GCC) in the _Client_ folder, and the server using the _go build_ command in the server folder. 
 
