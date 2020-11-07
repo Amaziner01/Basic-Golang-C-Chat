@@ -10,7 +10,6 @@ import (
 
 //Server to Client
 const (
-	HeartBeatResp    byte = 0x0C
 	NewConnection    byte = 0x0A
 	NewDisconnection byte = 0x0B
 )
@@ -74,8 +73,7 @@ func handleClient(conn net.Conn, server *Server, queue *Queue) {
 
 			switch read[0] {
 			case HeartBeat:
-				fmt.Printf("%s heartbeating\n", name)
-				//client.mConn.Write([]byte{HeartBeatResp, 0x00})
+				//fmt.Printf("%s heartbeating\n", name)
 				break
 
 			case Message:
