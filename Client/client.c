@@ -18,7 +18,14 @@
 
 typedef DWORD WINAPI thread_f;
 
-const char* STR_CH = "->";
+const char *STR_CH = "->";
+
+void disconnectClient(){
+    system("cls");
+    printf("Server Crashed...\n");
+    Sleep(5000);
+    exit(0);
+}
 
 thread_f HeartBeat(void *lparam){
     SOCKET client = *(SOCKET *)lparam;
@@ -37,7 +44,6 @@ thread_f Receive(void *lparam){
         char buffer[255];
         recv(client, buffer, 255, 0);
         if(strlen(buffer) != 0){
-
             switch (buffer[0])
             {
                 case MESSAGE:
@@ -68,6 +74,9 @@ thread_f Receive(void *lparam){
                     break;
             }
             
+        }
+        else{
+            disconnectClient();
         }
         Sleep(100);
     }
